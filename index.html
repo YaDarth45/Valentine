@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Proposal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      background: linear-gradient(135deg, #f9c8d4, #ffafd9);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+    }
+
+.watermark {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+      white-space: nowrap;
+      opacity: 0.1;
+    }
+
+    .watermark span {
+      display: block;
+      font-size: 14px;
+      color: #ff69b4;
+      font-weight: bold;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100%); }
+    }
+
+
+    /* Container Styling */
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px 50px;
+      border-radius: 30px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 450px;
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    /* Hidden Sections */
+    .dialogue-box, .final-dialogue-box, .rejection-box {
+      display: none;
+    }
+
+    /* Input Fields */
+    .rounded-input {
+      border-radius: 15px;
+      padding: 15px;
+      width: calc(100% - 30px);
+      font-size: 16px;
+      border: 2px solid #ff69b4;
+      outline: none;
+      background-color: #fff;
+    }
+
+    /* Title Font Styling */
+    .cute-retro-font {
+      font-family: 'Poppins', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ff69b4;
+      margin: 20px 0;
+    }
+
+    /* Button Styling */
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 25px;
+      gap: 30px;
+    }
+
+    button {
+      border-radius: 25px;
+      padding: 18px 30px;
+      border: none;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 45%;
+    }
+
+    .yes-btn {
+      background-color: #ff69b4;
+    }
+
+    .yes-btn:hover {
+      background-color: #ff4081;
+    }
+
+    .no-btn {
+      background-color: #ddd;
+    }
+
+    .no-btn:hover {
+      background-color: #ff4c4c;
+    }
+
+    /* Image Styling */
+    .proposal-image {
+      width: 150px;
+      height: 150px;
+      margin: 20px auto;
+      border-radius: 20px;
+    }
+
+    /* Rejection Box Styling */
+    .rejection-box {
+      border-radius: 25px;
+      border: 2px solid #ff69b4;
+      padding: 25px;
+      background-color: #ffe0f0;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .rejection-text {
+      font-size: 22px;
+      color: #ff4c4c;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Password Input -->
+    <div id="password-box">
+      <input type="password" id="password" class="rounded-input" placeholder="Enter Password">
+      <button onclick="checkPassword()">Submit</button>
+    </div>
+
+    <!-- Main Proposal Dialogue -->
+    <div id="dialogue-box" class="dialogue-box">
+      <div class="cute-retro-font">Trish, will you be my valentine?</div>
+      <img src="me.jpg" class="proposal-image">
+      <img src="trish.jpg" class="proposal-image">
+      <div class="buttons">
+        <button class="yes-btn" onclick="acceptProposal()">Yes</button>
+        <button class="no-btn" onclick="rejectProposal()">No</button>
+      </div>
+    </div>
+
+    <!-- Rejection Dialogue -->
+    <div id="rejection-box" class="rejection-box">
+      <div class="rejection-text">Not allowed, ma'am 😤</div>
+      <button class="no-btn" onclick="retryProposal()">Try Again</button>
+    </div>
+
+    <!-- Final Acceptance Dialogue -->
+    <div id="final-dialogue-box" class="final-dialogue-box">
+      <div class="cute-retro-font">I promise to make every Valentine's special for us no matter where we are in the world.</div>
+      <div class="cute-retro-font">💖 Date Idea: Marry Me Pasta</div>
+      <div class="cute-retro-font">📍 Venue: FaceTime</div>
+<div class="cute-retro-font">⏰ Time: 8:30 PM GVA Time
+      <img src="me.jpg" class="proposal-image">
+      <img src="trish.jpg" class="proposal-image">
+    </div>
+
+  <script>
+    function checkPassword() {
+      const passwordInput = document.getElementById("password").value;
+      const correctPassword = "rabbit"; // Change this to your actual password
+      if (passwordInput === correctPassword) {
+        document.getElementById("password-box").style.display = "none";
+        document.getElementById("dialogue-box").style.display = "block";
+      } else {
+        alert("Incorrect password! Try again.");
+      }
+    }
+
+    function acceptProposal() {
+      document.getElementById("dialogue-box").style.display = "none";
+      document.getElementById("final-dialogue-box").style.display = "block";
+    }
+
+    function rejectProposal() {
+      document.getElementById("dialogue-box").style.display = "none";
+      document.getElementById("rejection-box").style.display = "block";
+    }
+
+    function retryProposal() {
+      document.getElementById("rejection-box").style.display = "none";
+      document.getElementById("dialogue-box").style.display = "block";
+    }
+  </script>
+</body>
+</html>
