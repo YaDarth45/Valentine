@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Proposal</title>
+  <style>
+    body {
+      background-color: #fde8e8;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #watermark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 20px), repeating-linear-gradient(135deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 20px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 100px;
+      color: #ffb6c1;
+      text-align: center;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .password-box,
+    .dialogue-box {
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .rounded-input {
+      border-radius: 12px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .cute-retro-font {
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      color: #ff69b4;
+      margin: 20px 0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    button {
+      border-radius: 12px;
+      padding: 10px 20px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .yes-btn {
+      background-color: #ff69b4;
+    }
+
+    .no-btn {
+      background-color: #ccc;
+    }
+
+    #picture-placeholder-1,
+    #picture-placeholder-2 {
+      border: 2px dashed #ccc;
+      width: 100px;
+      height: 100px;
+      margin: 20px auto;
+    }
+
+    #dialogue-box {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="watermark">TY</div>
+  <div class="container">
+    <div id="password-box" class="password-box">
+      <input type="password" id="password" class="rounded-input" placeholder="Enter Password">
+      <button onclick="checkPassword()">Submit</button>
+    </div>
+    <div id="dialogue-box" class="dialogue-box">
+      <div class="cute-retro-font">Trish, will you be my valentine?</div>
+      <div id="picture-placeholder-1"></div>
+      <div class="buttons">
+        <button class="yes-btn" onclick="acceptProposal()">Yes</button>
+        <button class="no-btn">No</button>
+      </div>
+      <div id="picture-placeholder-2"></div>
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      if (password === 'rabbit') {
+        document.getElementById('password-box').style.display = 'none';
+        document.getElementById('dialogue-box').style.display = 'block';
+      } else {
+        alert('Incorrect password.');
+      }
+    }
+
+    function acceptProposal() {
+      const picturePlaceholder2 = document.getElementById('picture-placeholder-2');
+      picturePlaceholder2.style.border = '2px dashed #ff69b4';
+      picturePlaceholder2.style.backgroundImage = 'url("your-second-image-url-here")';
+      picturePlaceholder2.style.backgroundSize = 'cover';
+      picturePlaceholder2.style.backgroundPosition = 'center';
+    }
+  </script>
+</body>
+</html>
