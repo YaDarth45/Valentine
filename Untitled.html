@@ -6,7 +6,6 @@
   <title>Valentine's Proposal</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Global Styles */
     body {
       background: linear-gradient(135deg, #f9c8d4, #ffafd9);
       font-family: 'Poppins', sans-serif;
@@ -46,7 +45,6 @@
       to { transform: translateY(-100%); }
     }
 
-    /* Container Styling */
     .container {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 40px 50px;
@@ -59,17 +57,14 @@
       backdrop-filter: blur(12px);
     }
 
-    /* Girlfriend's Day Box */
     .girlfriends-day-box {
       display: block;
     }
 
-    /* Hidden Sections */
     .dialogue-box, .final-dialogue-box, .rejection-box, .password-box {
       display: none;
     }
 
-    /* Input Fields */
     .rounded-input {
       border-radius: 15px;
       padding: 15px;
@@ -80,7 +75,6 @@
       background-color: #fff;
     }
 
-    /* Title Font Styling */
     .cute-retro-font {
       font-family: 'Poppins', sans-serif;
       font-size: 28px;
@@ -89,7 +83,6 @@
       margin: 20px 0;
     }
 
-    /* Button Styling */
     .buttons {
       display: flex;
       justify-content: space-around;
@@ -124,14 +117,12 @@
       background-color: #ff4c4c;
     }
 
-    /* Video Styling */
     .girlfriend-video {
       width: 100%;
       border-radius: 20px;
       margin-top: 20px;
     }
 
-    /* Rejection Box Styling */
     .rejection-box {
       border-radius: 25px;
       border: 2px solid #ff69b4;
@@ -146,7 +137,6 @@
       font-weight: bold;
     }
 
-    /* Continue Button */
     .continue-btn {
       background-color: #ff69b4;
       margin-top: 20px;
@@ -156,6 +146,15 @@
     .continue-btn:hover {
       background-color: #ff4081;
     }
+
+    .proposal-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+      object-fit: cover;
+      margin: 15px;
+      border: 4px solid #ff69b4;
+    }
   </style>
 </head>
 <body>
@@ -163,7 +162,7 @@
     <!-- Girlfriend's Day Box -->
     <div id="girlfriends-day-box" class="girlfriends-day-box">
       <div class="cute-retro-font">Happy Girlfriend's Day</div>
-      <video class="girlfriend-video" controls autoplay loop>
+      <video class="girlfriend-video" controls autoplay loop muted playsinline>
         <source src="trish2.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -212,7 +211,7 @@
 
     function checkPassword() {
       const passwordInput = document.getElementById("password").value;
-      const correctPassword = "rabbit"; // Change this to your actual password
+      const correctPassword = "rabbit"; // Change as needed
       if (passwordInput === correctPassword) {
         document.getElementById("password-box").style.display = "none";
         document.getElementById("dialogue-box").style.display = "block";
