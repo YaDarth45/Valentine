@@ -20,7 +20,7 @@
       color: #fff;
     }
 
-.watermark {
+    .watermark {
       position: fixed;
       top: 0;
       left: 0;
@@ -46,7 +46,6 @@
       to { transform: translateY(-100%); }
     }
 
-
     /* Container Styling */
     .container {
       background-color: rgba(255, 255, 255, 0.95);
@@ -60,8 +59,13 @@
       backdrop-filter: blur(12px);
     }
 
+    /* Girlfriend's Day Box */
+    .girlfriends-day-box {
+      display: block;
+    }
+
     /* Hidden Sections */
-    .dialogue-box, .final-dialogue-box, .rejection-box {
+    .dialogue-box, .final-dialogue-box, .rejection-box, .password-box {
       display: none;
     }
 
@@ -120,12 +124,11 @@
       background-color: #ff4c4c;
     }
 
-    /* Image Styling */
-    .proposal-image {
-      width: 150px;
-      height: 150px;
-      margin: 20px auto;
+    /* Video Styling */
+    .girlfriend-video {
+      width: 100%;
       border-radius: 20px;
+      margin-top: 20px;
     }
 
     /* Rejection Box Styling */
@@ -142,12 +145,33 @@
       color: #ff4c4c;
       font-weight: bold;
     }
+
+    /* Continue Button */
+    .continue-btn {
+      background-color: #ff69b4;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .continue-btn:hover {
+      background-color: #ff4081;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Girlfriend's Day Box -->
+    <div id="girlfriends-day-box" class="girlfriends-day-box">
+      <div class="cute-retro-font">Happy Girlfriend's Day</div>
+      <video class="girlfriend-video" controls autoplay loop>
+        <source src="trish2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="continue-btn" onclick="continueToPassword()">Continue</button>
+    </div>
+
     <!-- Password Input -->
-    <div id="password-box">
+    <div id="password-box" class="password-box">
       <input type="password" id="password" class="rounded-input" placeholder="Enter Password">
       <button onclick="checkPassword()">Submit</button>
     </div>
@@ -174,12 +198,18 @@
       <div class="cute-retro-font">I promise to make every Valentine's special for us no matter where we are in the world.</div>
       <div class="cute-retro-font">💖 Date Idea: Marry Me Pasta</div>
       <div class="cute-retro-font">📍 Venue: FaceTime</div>
-<div class="cute-retro-font">⏰ Time: 8:30 PM GVA Time
+      <div class="cute-retro-font">⏰ Time: 8:30 PM GVA Time</div>
       <img src="me.jpg" class="proposal-image">
       <img src="trish.jpg" class="proposal-image">
     </div>
+  </div>
 
   <script>
+    function continueToPassword() {
+      document.getElementById("girlfriends-day-box").style.display = "none";
+      document.getElementById("password-box").style.display = "block";
+    }
+
     function checkPassword() {
       const passwordInput = document.getElementById("password").value;
       const correctPassword = "rabbit"; // Change this to your actual password
