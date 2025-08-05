@@ -51,8 +51,9 @@
       margin-bottom: 15px;
     }
 
+    /* 🔪 Knife cursor on hover */
     #cake:hover {
-      cursor: url('pink_knife_cursor.png'), auto;
+      cursor: url('pink_knife_cursor.png') 16 16, auto;
     }
 
     .cake-cut-animation {
@@ -221,13 +222,11 @@
       const cake = document.getElementById("cake");
       cake.classList.add("cake-cut-animation");
 
-      // Show unlock message after animation
       setTimeout(() => {
         document.getElementById("birthday-box").classList.add("hidden");
         document.getElementById("unlock-box").classList.remove("hidden");
       }, 1000);
 
-      // Proceed to next section
       setTimeout(() => {
         document.getElementById("unlock-box").classList.add("hidden");
         document.getElementById("girlfriends-day-box").classList.remove("hidden");
