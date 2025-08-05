@@ -15,7 +15,6 @@
       height: 100vh;
       margin: 0;
       overflow: hidden;
-      position: relative;
       color: #fff;
     }
 
@@ -35,32 +34,25 @@
       display: none;
     }
 
-    .birthday-box img {
-      width: 200px;
-      animation: floatCake 1s ease-in-out;
-    }
-
-    @keyframes floatCake {
-      from { transform: translateY(-40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     .birthday-text, .unlock-text {
       font-size: 26px;
       font-weight: bold;
       color: #ff69b4;
       margin: 20px 0;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     .unlock-text {
       font-size: 22px;
       color: #d63384;
+    }
+
+    .cake-image {
+      width: 200px;
+      transition: transform 1s ease-in-out;
+    }
+
+    .cake-cut {
+      transform: scale(0.95) rotate(-5deg);
     }
 
     .rounded-input {
@@ -75,7 +67,7 @@
 
     .continue-btn, button {
       border-radius: 25px;
-      padding: 18px 30px;
+      padding: 15px 30px;
       border: none;
       font-size: 18px;
       color: white;
@@ -83,7 +75,7 @@
       transition: all 0.3s ease;
       background-color: #ff69b4;
       margin-top: 20px;
-      width: 100%;
+      width: auto;
     }
 
     .continue-btn:hover {
@@ -155,17 +147,19 @@
 <body>
   <div class="container">
 
-    <!-- 🎂 Birthday Animation Sequence -->
-    <div id="birthday-box" class="birthday-box">
-      <img src="cake.png" alt="Birthday Cake" />
+    <!-- 🎂 Birthday Cake Screen -->
+    <div id="birthday-box">
       <div class="birthday-text">Happy Birthday Trish 🎂</div>
+      <img src="cake.png" id="cake" class="cake-image" alt="Cake" />
+      <button onclick="cutCake()">Cut Cake</button>
     </div>
 
+    <!-- 🧠 Unlock Text -->
     <div id="unlock-box" class="hidden">
       <div class="unlock-text">🧠 Frontal lobe unlocked</div>
     </div>
 
-    <!-- 🎥 Girlfriend's Day Box (shown after animation) -->
+    <!-- 🎥 Girlfriend's Day Box -->
     <div id="girlfriends-day-box" class="hidden">
       <div class="cute-retro-font">Happy Girlfriend's Day</div>
       <video class="girlfriend-video" controls autoplay loop muted playsinline>
@@ -211,18 +205,22 @@
   </div>
 
   <script>
-    // 🎉 Start with birthday animation
-    window.onload = () => {
-      setTimeout(() => {
-        document.getElementById("unlock-box").classList.remove("hidden");
-      }, 2000);
+    function cutCake() {
+      const cake = document.getElementById("cake");
+      cake.classList.add("cake-cut");
 
+      // Show unlock message after cake cut
       setTimeout(() => {
         document.getElementById("birthday-box").classList.add("hidden");
+        document.getElementById("unlock-box").classList.remove("hidden");
+      }, 1000);
+
+      // Proceed to next section after unlock text
+      setTimeout(() => {
         document.getElementById("unlock-box").classList.add("hidden");
         document.getElementById("girlfriends-day-box").classList.remove("hidden");
-      }, 4000);
-    };
+      }, 3000);
+    }
 
     function continueToPassword() {
       document.getElementById("girlfriends-day-box").classList.add("hidden");
