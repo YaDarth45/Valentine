@@ -48,11 +48,18 @@
 
     .cake-image {
       width: 200px;
-      transition: transform 1s ease-in-out;
     }
 
-    .cake-cut {
-      transform: scale(0.95) rotate(-5deg);
+    .cake-cut-animation {
+      animation: cakeCutBounce 1s ease-in-out forwards;
+    }
+
+    @keyframes cakeCutBounce {
+      0%   { transform: rotate(0deg) scale(1); opacity: 1; }
+      25%  { transform: rotate(-10deg) scale(1.05); }
+      50%  { transform: rotate(10deg) scale(0.95); }
+      75%  { transform: rotate(-5deg) scale(1.02); }
+      100% { transform: rotate(0deg) scale(1); }
     }
 
     .rounded-input {
@@ -207,15 +214,15 @@
   <script>
     function cutCake() {
       const cake = document.getElementById("cake");
-      cake.classList.add("cake-cut");
+      cake.classList.add("cake-cut-animation");
 
-      // Show unlock message after cake cut
+      // Show unlock message after animation
       setTimeout(() => {
         document.getElementById("birthday-box").classList.add("hidden");
         document.getElementById("unlock-box").classList.remove("hidden");
       }, 1000);
 
-      // Proceed to next section after unlock text
+      // Proceed to next section
       setTimeout(() => {
         document.getElementById("unlock-box").classList.add("hidden");
         document.getElementById("girlfriends-day-box").classList.remove("hidden");
