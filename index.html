@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Valentine's Proposal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       background: linear-gradient(135deg, #f9c8d4, #ffafd9);
@@ -19,32 +19,6 @@
       color: #fff;
     }
 
-    .watermark {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 1;
-      white-space: nowrap;
-      opacity: 0.1;
-    }
-
-    .watermark span {
-      display: block;
-      font-size: 14px;
-      color: #ff69b4;
-      font-weight: bold;
-      animation: marquee 10s linear infinite;
-    }
-
-    @keyframes marquee {
-      from { transform: translateY(0); }
-      to { transform: translateY(-100%); }
-    }
-
     .container {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 40px 50px;
@@ -57,12 +31,36 @@
       backdrop-filter: blur(12px);
     }
 
-    .girlfriends-day-box {
-      display: block;
+    .hidden {
+      display: none;
     }
 
-    .dialogue-box, .final-dialogue-box, .rejection-box, .password-box {
-      display: none;
+    .birthday-box img {
+      width: 200px;
+      animation: floatCake 1s ease-in-out;
+    }
+
+    @keyframes floatCake {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .birthday-text, .unlock-text {
+      font-size: 26px;
+      font-weight: bold;
+      color: #ff69b4;
+      margin: 20px 0;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .unlock-text {
+      font-size: 22px;
+      color: #d63384;
     }
 
     .rounded-input {
@@ -75,22 +73,7 @@
       background-color: #fff;
     }
 
-    .cute-retro-font {
-      font-family: 'Poppins', sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: #ff69b4;
-      margin: 20px 0;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 25px;
-      gap: 30px;
-    }
-
-    button {
+    .continue-btn, button {
       border-radius: 25px;
       padding: 18px 30px;
       border: none;
@@ -98,7 +81,42 @@
       color: white;
       cursor: pointer;
       transition: all 0.3s ease;
-      width: 45%;
+      background-color: #ff69b4;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .continue-btn:hover {
+      background-color: #ff4081;
+    }
+
+    .cute-retro-font {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ff69b4;
+      margin: 20px 0;
+    }
+
+    .girlfriend-video {
+      width: 100%;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    .proposal-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+      object-fit: cover;
+      margin: 15px;
+      border: 4px solid #ff69b4;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 25px;
+      gap: 30px;
     }
 
     .yes-btn {
@@ -111,16 +129,12 @@
 
     .no-btn {
       background-color: #ddd;
+      color: #000;
     }
 
     .no-btn:hover {
       background-color: #ff4c4c;
-    }
-
-    .girlfriend-video {
-      width: 100%;
-      border-radius: 20px;
-      margin-top: 20px;
+      color: white;
     }
 
     .rejection-box {
@@ -136,47 +150,39 @@
       color: #ff4c4c;
       font-weight: bold;
     }
-
-    .continue-btn {
-      background-color: #ff69b4;
-      margin-top: 20px;
-      width: 100%;
-    }
-
-    .continue-btn:hover {
-      background-color: #ff4081;
-    }
-
-    .proposal-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 100%;
-      object-fit: cover;
-      margin: 15px;
-      border: 4px solid #ff69b4;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Girlfriend's Day Box -->
-    <div id="girlfriends-day-box" class="girlfriends-day-box">
+
+    <!-- 🎂 Birthday Animation Sequence -->
+    <div id="birthday-box" class="birthday-box">
+      <img src="cake.png" alt="Birthday Cake" />
+      <div class="birthday-text">Happy Birthday Trish 🎂</div>
+    </div>
+
+    <div id="unlock-box" class="hidden">
+      <div class="unlock-text">🧠 Frontal lobe unlocked</div>
+    </div>
+
+    <!-- 🎥 Girlfriend's Day Box (shown after animation) -->
+    <div id="girlfriends-day-box" class="hidden">
       <div class="cute-retro-font">Happy Girlfriend's Day</div>
       <video class="girlfriend-video" controls autoplay loop muted playsinline>
-        <source src="trish2.mp4" type="video/mp4">
+        <source src="trish2.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <button class="continue-btn" onclick="continueToPassword()">Continue</button>
     </div>
 
-    <!-- Password Input -->
-    <div id="password-box" class="password-box">
+    <!-- 🔐 Password -->
+    <div id="password-box" class="hidden">
       <input type="password" id="password" class="rounded-input" placeholder="Enter Password">
       <button onclick="checkPassword()">Submit</button>
     </div>
 
-    <!-- Main Proposal Dialogue -->
-    <div id="dialogue-box" class="dialogue-box">
+    <!-- 💌 Main Proposal -->
+    <div id="dialogue-box" class="hidden">
       <div class="cute-retro-font">Trish, will you be my valentine?</div>
       <img src="me.jpg" class="proposal-image">
       <img src="trish.jpg" class="proposal-image">
@@ -186,14 +192,14 @@
       </div>
     </div>
 
-    <!-- Rejection Dialogue -->
-    <div id="rejection-box" class="rejection-box">
+    <!-- ❌ Rejection -->
+    <div id="rejection-box" class="hidden rejection-box">
       <div class="rejection-text">Not allowed, ma'am 😤</div>
       <button class="no-btn" onclick="retryProposal()">Try Again</button>
     </div>
 
-    <!-- Final Acceptance Dialogue -->
-    <div id="final-dialogue-box" class="final-dialogue-box">
+    <!-- 💖 Final Yes -->
+    <div id="final-dialogue-box" class="hidden">
       <div class="cute-retro-font">I promise to make every Valentine's special for us no matter where we are in the world.</div>
       <div class="cute-retro-font">💖 Date Idea: Marry Me Pasta</div>
       <div class="cute-retro-font">📍 Venue: FaceTime</div>
@@ -201,38 +207,52 @@
       <img src="me.jpg" class="proposal-image">
       <img src="trish.jpg" class="proposal-image">
     </div>
+
   </div>
 
   <script>
+    // 🎉 Start with birthday animation
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById("unlock-box").classList.remove("hidden");
+      }, 2000);
+
+      setTimeout(() => {
+        document.getElementById("birthday-box").classList.add("hidden");
+        document.getElementById("unlock-box").classList.add("hidden");
+        document.getElementById("girlfriends-day-box").classList.remove("hidden");
+      }, 4000);
+    };
+
     function continueToPassword() {
-      document.getElementById("girlfriends-day-box").style.display = "none";
-      document.getElementById("password-box").style.display = "block";
+      document.getElementById("girlfriends-day-box").classList.add("hidden");
+      document.getElementById("password-box").classList.remove("hidden");
     }
 
     function checkPassword() {
       const passwordInput = document.getElementById("password").value;
-      const correctPassword = "rabbit"; // Change as needed
+      const correctPassword = "rabbit";
       if (passwordInput === correctPassword) {
-        document.getElementById("password-box").style.display = "none";
-        document.getElementById("dialogue-box").style.display = "block";
+        document.getElementById("password-box").classList.add("hidden");
+        document.getElementById("dialogue-box").classList.remove("hidden");
       } else {
         alert("Incorrect password! Try again.");
       }
     }
 
     function acceptProposal() {
-      document.getElementById("dialogue-box").style.display = "none";
-      document.getElementById("final-dialogue-box").style.display = "block";
+      document.getElementById("dialogue-box").classList.add("hidden");
+      document.getElementById("final-dialogue-box").classList.remove("hidden");
     }
 
     function rejectProposal() {
-      document.getElementById("dialogue-box").style.display = "none";
-      document.getElementById("rejection-box").style.display = "block";
+      document.getElementById("dialogue-box").classList.add("hidden");
+      document.getElementById("rejection-box").classList.remove("hidden");
     }
 
     function retryProposal() {
-      document.getElementById("rejection-box").style.display = "none";
-      document.getElementById("dialogue-box").style.display = "block";
+      document.getElementById("rejection-box").classList.add("hidden");
+      document.getElementById("dialogue-box").classList.remove("hidden");
     }
   </script>
 </body>
